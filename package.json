@@ -1,0 +1,25 @@
+{
+  "name": "first-test",
+  "version": "0.0.1",
+  "description": "creating first test from the start",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/izyuminka/ProtractorTraining.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/izyuminka/ProtractorTraining/issues"
+  },
+  "homepage": "https://github.com/izyuminka/ProtractorTraining#readme",
+  "dependencies": {
+    "jasmine-node": "^1.14.5",
+    "protractor": "^5.1.2",
+    "selenium-webdriver": "^3.6.0",
+    "webdriver-manager": "^12.0.6"
+  }
+}
