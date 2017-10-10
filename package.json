@@ -4,6 +4,7 @@
   "description": "creating first test from the start",
   "main": "index.js",
   "scripts": {
+    "start": "./node_modules/.bin/webdriver-manager start",
     "test": "./node_modules/.bin/protractor conf.js"
   },
   "repository": {
