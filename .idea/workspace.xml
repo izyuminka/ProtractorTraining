@@ -4,6 +4,7 @@
     <list default="true" id="3523612b-456f-4d0c-a741-f1e30123b28b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/compare-spec.js" afterPath="$PROJECT_DIR$/compare-spec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf.js" afterPath="$PROJECT_DIR$/conf.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/getMenuForCity.js" afterPath="$PROJECT_DIR$/getMenuForCity.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -21,28 +22,28 @@
       <file leaf-file-name="conf.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conf.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="136">
+              <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="compare-spec.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="compare-spec.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/compare-spec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+            <state relative-caret-position="170">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getMenuForCity.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="getMenuForCity.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/getMenuForCity.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+            <state relative-caret-position="289">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -59,6 +60,7 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="internal/process/next_tick.js" />
         <option value="internal/inspector_async_hook.js" />
+        <option value="$PROJECT_DIR$/conf.js" />
         <option value="$PROJECT_DIR$/getMenuForCity.js" />
         <option value="$PROJECT_DIR$/compare-spec.js" />
       </list>
@@ -154,7 +156,7 @@
       <option name="presentableId" value="Default" />
       <updated>1507726972108</updated>
       <workItem from="1507726975329" duration="12102000" />
-      <workItem from="1507799362622" duration="1170000" />
+      <workItem from="1507799362622" duration="7400000" />
     </task>
     <task id="LOCAL-00001" summary="To handle dependencies:&#10;1. install protractor, jasmine, etc.&#10;2. run webdriver-manager update under ./node-modules/.bin&#10;&#10;otherwise globally installed webdriver-manager is being called&#10;&#10;To run test:&#10;1. Add script &quot;test&quot;:&quot;protractor conf.js&quot;&#10;2. run &quot;npm test&quot; from command line">
       <created>1507729033046</created>
@@ -170,43 +172,50 @@
       <option name="project" value="LOCAL" />
       <updated>1507740829608</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Used findElement with following getText() expression .then(text =&gt; console.log(text))&#10;City name returned">
+      <created>1507800663237</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1507800663237</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Yandex - 2017.10.11 at 19h 52m 35s.xml">
+    <history-entry file="Yandex - 2017.10.12 at 13h 28m 49s.xml">
       <configuration name="Yandex" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Yandex - 2017.10.12 at 12h 14m 17s.xml">
+    <history-entry file="Yandex - 2017.10.12 at 13h 30m 09s.xml">
       <configuration name="Yandex" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Yandex - 2017.10.12 at 12h 16m 57s.xml">
+    <history-entry file="Yandex - 2017.10.12 at 13h 33m 23s.xml">
       <configuration name="Yandex" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Yandex - 2017.10.12 at 12h 18m 19s.xml">
+    <history-entry file="Yandex - 2017.10.12 at 13h 45m 24s.xml">
       <configuration name="Yandex" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Yandex - 2017.10.12 at 12h 18m 53s.xml">
+    <history-entry file="Yandex - 2017.10.12 at 13h 46m 00s.xml">
       <configuration name="Yandex" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Yandex - 2017.10.12 at 12h 19m 20s.xml">
+    <history-entry file="Yandex - 2017.10.12 at 14h 08m 57s.xml">
       <configuration name="Yandex" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Yandex - 2017.10.12 at 12h 20m 14s.xml">
+    <history-entry file="Yandex - 2017.10.12 at 14h 15m 22s.xml">
       <configuration name="Yandex" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Yandex - 2017.10.12 at 12h 21m 48s.xml">
+    <history-entry file="Yandex - 2017.10.12 at 14h 15m 58s.xml">
       <configuration name="Yandex" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Yandex - 2017.10.12 at 12h 22m 16s.xml">
+    <history-entry file="Yandex - 2017.10.12 at 14h 16m 32s.xml">
       <configuration name="Yandex" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
-    <history-entry file="Yandex - 2017.10.12 at 12h 22m 54s.xml">
+    <history-entry file="Yandex - 2017.10.12 at 14h 18m 00s.xml">
       <configuration name="Yandex" configurationId="JavaScriptTestRunnerProtractor" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13272000" />
+    <option name="totallyTimeSpent" value="19502000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -249,7 +258,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="To handle dependencies:&#10;1. install protractor, jasmine, etc.&#10;2. run webdriver-manager update under ./node-modules/.bin&#10;&#10;otherwise globally installed webdriver-manager is being called&#10;&#10;To run test:&#10;1. Add script &quot;test&quot;:&quot;protractor conf.js&quot;&#10;2. run &quot;npm test&quot; from command line" />
     <MESSAGE value="Get element text failing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Get element text failing" />
+    <MESSAGE value="Used findElement with following getText() expression .then(text =&gt; console.log(text))&#10;City name returned" />
+    <option name="LAST_COMMIT_MESSAGE" value="Used findElement with following getText() expression .then(text =&gt; console.log(text))&#10;City name returned" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -370,24 +380,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/conf.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compare-spec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+        <state relative-caret-position="136">
+          <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getMenuForCity.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+        <state relative-caret-position="289">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compare-spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>

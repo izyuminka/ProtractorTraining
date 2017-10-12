@@ -4,5 +4,8 @@ exports.config = {
     framework: 'jasmine',
     capabilities: {
         browserName: 'chrome'
+    },
+    params: {
+        City: ['Лондон','Москва']
     }
 };

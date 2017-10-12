@@ -8,7 +8,7 @@ describe('compare menu for 2 cities on Yandex page', function () {
         browser.get('http://yandex.ru');
 
         getMenuForCity.defineCity();
-        //console.log(getMenuForCity.defineCity());
+
         browser.close();
     })
-})
+});
