@@ -12,12 +12,12 @@ describe('compare menu for 2 cities on Yandex page', function () {
         browser.waitForAngularEnabled(false);
         browser.get('http://yandex.ru');
 
-        var testCityIndex = 0;
+        //var testCityIndex = 0;
 
         //for (testCityIndex = 0; testCityIndex < browser.params.City.length; testCityIndex++) {
-            var testTestCity = browser.params.City[testCityIndex];
-            defineCity.defineCity(testTestCity);
-            getMenuForCity.getMenuForCity(testTestCity);
+            //var testTestCity = browser.params.City[testCityIndex];
+            //defineCity.defineCity(testTestCity);
+            getMenuForCity.getMenuForCity();
             //console.log(testTestCity);
         //}
 
