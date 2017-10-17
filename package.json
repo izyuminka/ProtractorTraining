@@ -15,6 +15,7 @@
   "homepage": "https://github.com/izyuminka/ProtractorTraining#readme",
   "dependencies": {
     "jasmine": "^2.8.0",
+    "jasmine-spec-reporter": "^4.2.1",
     "protractor": "^5.1.2"
   }
 }
