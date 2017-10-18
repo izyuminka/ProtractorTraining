@@ -12,6 +12,9 @@ var menuMore = By.xpath('//*[@data-statlog="tabs.more"]');
 
 var EC = protractor.ExpectedConditions;
 
+var defaultCity;
+var myArray = [];
+
 module.exports = {
 
     changeCity: function (city) {
@@ -25,7 +28,7 @@ module.exports = {
         //ждать дропдаун
         browser.wait(EC.presenceOf(element(citySuggestion)), 5000)
         //выбираешь елемент
-        .then(function (value) {
+        .then(function () {
             browser.element(citySelect).click();
         });
         browser.wait(EC.elementToBeClickable(element(citySaveButton)), 5000);
@@ -49,30 +52,45 @@ module.exports = {
 
     },
 
-    storeTestArray: [''],
+    storeTestArray: function (city) {
+        var testArray = [];
+        //testArray.sort();
+        testArray.push(city);
+        myArray = testArray;
+        console.log(testArray);
+    },
 
     isCityTestable: function (array) {
+
         browser.findElement(cityElement).getText().then(function (city) {
             for(var i=0; i<array.length; i++) {
                 if (array[i] === city) {
-                    module.exports.storeTestArray.push(browser.params.City[i])
+                     defaultCity = browser.params.City[i];
+                    module.exports.storeTestArray(defaultCity);
                 }
                 else {
+                    defaultCity = array[i];
+                    module.exports.storeTestArray(defaultCity);
                     module.exports.changeCity(array[i]);
-                    module.exports.storeTestArray.push(array[i])
                 }
             }
-            })
+            }).then(module.exports.compareArrays());
     },
 
         compareArrays: function() {
+            browser.params.City.sort();
+            myArray.sort();
 
-            if(browser.params.City === module.exports.storeTestArray){
+            if(browser.params.City === myArray){
                 console.log("Arrays are equal.")
             }
             else{
-                console.log("There is a problem with arrays!")
+                console.log("There is a problem with arrays!'"+myArray+"'")
             }
+            console.log(browser.params.City);
+            console.log("test array: "+myArray);
+            console.log("default city: "+defaultCity);
+
         }
 
 
