@@ -12,8 +12,7 @@ var menuMore = By.xpath('//*[@data-statlog="tabs.more"]');
 
 var EC = protractor.ExpectedConditions;
 
-var defaultCity;
-var myArray = [];
+var myArray = [], defaultCity;
 
 module.exports = {
 
@@ -53,11 +52,10 @@ module.exports = {
     },
 
     storeTestArray: function (city) {
-        var testArray = [];
+        //var testArray = [];
         //testArray.sort();
-        testArray.push(city);
-        myArray = testArray;
-        console.log(testArray);
+        myArray.push(city);
+        //console.log(testArray);
     },
 
     isCityTestable: function (array) {
@@ -74,18 +72,20 @@ module.exports = {
                     module.exports.changeCity(array[i]);
                 }
             }
-            }).then(module.exports.compareArrays());
+            module.exports.compareArrays();
+            })
     },
 
         compareArrays: function() {
-            browser.params.City.sort();
-            myArray.sort();
+            //browser.params.City.sort();
+            //myArray.sort();
 
-            if(browser.params.City === myArray){
+            if(browser.params.City.sort().join() === myArray.sort().join()){
                 console.log("Arrays are equal.")
             }
             else{
-                console.log("There is a problem with arrays!'"+myArray+"'")
+                console.log("There is a problem with arrays!'"+myArray+"'");
+                console.log(myArray);
             }
             console.log(browser.params.City);
             console.log("test array: "+myArray);
