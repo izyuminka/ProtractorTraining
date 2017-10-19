@@ -4,7 +4,7 @@ var cityElement = By.xpath('//*[@class[contains(.,"geolink")]]//child::span');
 var citySaveButton = By.css('.button.form__save');
 var EC = protractor.ExpectedConditions;
 
-var myArray = [], testCity;
+var myArray = [], testCity, cityMenu, menu = [];
 
 module.exports = {
 
@@ -38,21 +38,20 @@ module.exports = {
         //check if city is changed
         browser.findElement(cityElement).getText().then(function (text) {
             if (text === city) {
-                getMenuForCity.getMenuForCity();
+
+                cityMenu.set(""+city+"", ""+getMenuForCity.getMenuForCity()+"");
+                //cityMenu[city] = getMenuForCity.getMenuForCity();
+
                 console.log("City has been successfully changed to: '" + city + "'.");
             }
             else {
                 console.log("City hasn't been changed. Edit script!");
             }
         });
-
     },
 
     storeTestArray: function (city) {
-        //var testArray = [];
-        //testArray.sort();
         myArray.push(city);
-        //console.log(testArray);
     },
 
     isCityTestable: function (array) {
@@ -62,7 +61,17 @@ module.exports = {
                 if (array[i] === city) {
                     testCity = browser.params.City[i];
                     module.exports.storeTestArray(testCity);
-                    getMenuForCity.getMenuForCity();
+                    //cityMenu.set(""+city+"", ""+getMenuForCity.getMenuForCity()+"");
+                    //cityMenu.set(keyCity=city,keyMenu=getMenuForCity.getMenuForCity());
+                    //cityMenu[city] = getMenuForCity.getMenuForCity();
+                    //var keyCity = testCity;
+                    var keyMenu = function(){
+                        getMenuForCity.getMenuForCity();
+
+                    };
+                    cityMenu = {testCity:keyMenu};
+                    //menu = Array.from(getMenuForCity.getMenuForCity());
+
                 }
                 else {
                     testCity = array[i];
@@ -88,6 +97,10 @@ module.exports = {
         console.log(browser.params.City);
         console.log("test array: " + myArray);
         console.log("Last selected test city: " + testCity);
+        //console.log(""+cityMenu.get("Минск") + " this was an attempt to print out map values")
+        var mapIter = cityMenu.keys();
+        console.log(mapIter.next().value);
+
     }
 };
 

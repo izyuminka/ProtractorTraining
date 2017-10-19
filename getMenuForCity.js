@@ -1,10 +1,8 @@
-//var defineCity = require("./defineCity.js");
+var defineCity = require("./defineCity.js");
 
 
 exports.getMenuForCity = function () {
     var menuForCity = [];
-
-
     browser.element(By.xpath('//*[@data-statlog="tabs.more"]')).click();
     browser.wait(element(By.xpath('//div[@class="home-tabs__more"]')).isDisplayed());
     var menuMoreElement =
@@ -16,7 +14,8 @@ exports.getMenuForCity = function () {
                     });
                 });
             }).then(function (value) {
-            console.log(menuForCity)
+                //console.log(menuForCity)
+                alert(menuForCity);
         });
 };
 
