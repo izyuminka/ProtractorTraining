@@ -16,16 +16,16 @@ describe('compare menu for 2 cities on Yandex page', function () {
         //defineCity.compareArrays();
         //let a = getMenuForCity.getMenuForCity();
         //defineCity.defineCity(browser.params.City[1]);
-       // let b = getMenuForCity.getMenuForCity();
+        // let b = getMenuForCity.getMenuForCity();
         //console.log(a,b)
         //var testCityIndex = 0;
 
         //for (testCityIndex = 0; testCityIndex < browser.params.City.length; testCityIndex++) {
-            //var testTestCity = browser.params.City[testCityIndex];
-            //defineCity.defineCity(testTestCity);
+        //var testTestCity = browser.params.City[testCityIndex];
+        //defineCity.defineCity(testTestCity);
 
-            //compareMenus.compareMenus();
-            //console.log(testTestCity);
+        //compareMenus.compareMenus();
+        //console.log(testTestCity);
         //}
 
         browser.close();

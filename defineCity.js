@@ -1,20 +1,19 @@
 var getMenuForCity = require("./getMenuForCity.js");
 
 var cityElement = By.xpath('//*[@class[contains(.,"geolink")]]//child::span');
-var cityChangeLink = By.css('[data-statlog^="head.region.setup"]');
-var cityInputField = By.id('city__front-input');
 var citySaveButton = By.css('.button.form__save');
-var menuMore = By.xpath('//*[@data-statlog="tabs.more"]');
-
 var EC = protractor.ExpectedConditions;
 
-var myArray = [], defaultCity;
+var myArray = [], testCity;
 
 module.exports = {
 
     changeCity: function (city) {
+        var cityChangeLink = By.css('[data-statlog^="head.region.setup"]');
+        var cityInputField = By.id('city__front-input');
         var citySuggestion = By.xpath("//*[@class='b-autocomplete-item__reg' and text()='" + city + "']");
-        var citySelect = By.xpath("//ul[contains(@class, \"input__popup-items\")]/li[1]/*[@class=\"b-autocomplete-item__reg\" and text()='" + city + "']");
+        var citySelect = By.xpath("//li[1]/*[@class=\"b-autocomplete-item__reg\" and text()='" + city + "']");
+
         browser.element(cityChangeLink).click();
         //1. Wait for page load
         browser.manage().timeouts().pageLoadTimeout(5000);
@@ -22,14 +21,16 @@ module.exports = {
         //2. Wait for drop-down
         browser.wait(EC.presenceOf(element(citySuggestion)), 5000)
         //3. Select drop-down value
-        .then(function () {
-            browser.element(citySelect).click();
-        });
+            .then(function () {
+                browser.element(citySelect).click();
+            });
         browser.wait(EC.elementToBeClickable(element(citySaveButton)), 5000);
         module.exports.saveChangedCity(city);
     },
 
-    saveChangedCity:function (city) {
+    saveChangedCity: function (city) {
+        var menuMore = By.xpath('//*[@data-statlog="tabs.more"]');
+
         element(citySaveButton).click();
         //TODO: get rid of sleep
         browser.sleep(2000);
@@ -37,9 +38,10 @@ module.exports = {
         //check if city is changed
         browser.findElement(cityElement).getText().then(function (text) {
             if (text === city) {
-                console.log("City has been successfully changed to: '"+city+"'.");
+                getMenuForCity.getMenuForCity();
+                console.log("City has been successfully changed to: '" + city + "'.");
             }
-            else{
+            else {
                 console.log("City hasn't been changed. Edit script!");
             }
         });
@@ -56,40 +58,37 @@ module.exports = {
     isCityTestable: function (array) {
 
         browser.findElement(cityElement).getText().then(function (city) {
-            for(var i=0; i<array.length; i++) {
+            for (var i = 0; i < array.length; i++) {
                 if (array[i] === city) {
-                     defaultCity = browser.params.City[i];
-                    module.exports.storeTestArray(defaultCity);
+                    testCity = browser.params.City[i];
+                    module.exports.storeTestArray(testCity);
+                    getMenuForCity.getMenuForCity();
                 }
                 else {
-                    defaultCity = array[i];
-                    module.exports.storeTestArray(defaultCity);
+                    testCity = array[i];
+                    module.exports.storeTestArray(testCity);
                     module.exports.changeCity(array[i]);
                 }
             }
             module.exports.compareArrays();
-            })
+        })
     },
+    compareArrays: function () {
+        //browser.params.City.sort();
+        //myArray.sort();
 
-        compareArrays: function() {
-            //browser.params.City.sort();
-            //myArray.sort();
-
-            if(browser.params.City.sort().join() === myArray.sort().join()){
-                console.log("Arrays are equal.")
-            }
-            else{
-                console.log("There is a problem with arrays! Test array contains: '"+myArray+"'");
-                console.log(myArray);
-            }
-            //below print statements added for test purposes
-            console.log(browser.params.City);
-            console.log("test array: "+myArray);
-            console.log("default city: "+defaultCity);
-
+        if (browser.params.City.sort().join() === myArray.sort().join()) {
+            console.log("City arrays are equal.")
         }
-
-
+        else {
+            console.log("There is a problem with arrays! Test array contains: '" + myArray + "'");
+            console.log(myArray);
+        }
+        //below print statements added for test purposes
+        console.log(browser.params.City);
+        console.log("test array: " + myArray);
+        console.log("Last selected test city: " + testCity);
+    }
 };
 
 /*exports.defineCity = function (parameters) {

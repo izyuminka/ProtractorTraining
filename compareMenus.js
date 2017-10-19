@@ -1,10 +1,5 @@
 var getMenuForCity = require("./getMenuForCity.js");
 var defineCity = require("./defineCity.js");
-var testCityIndex = new Array;
-testCityIndex = browser.params.City;
-//var count = 0;
-
-
 
 exports.compareMenus = function () {
     /*for (testCityIndex = 0; testCityIndex < browser.params.City.length; testCityIndex++) {

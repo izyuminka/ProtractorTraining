@@ -11,13 +11,12 @@ exports.getMenuForCity = function () {
         browser.findElements(By.xpath('//div[@class="home-tabs__more"]/child::div/descendant::*[@class="home-tabs__more-item"]'))
             .then(function (elements) {
                 elements.forEach(function (element) {
-                    element.getText().then(function(text){
+                    element.getText().then(function (text) {
                         menuForCity.push(text);
                     });
                 });
-            }).then(function (value) { console.log(menuForCity) });
-
-    console.log(menuForCity)
-
+            }).then(function (value) {
+            console.log(menuForCity)
+        });
 };
 
