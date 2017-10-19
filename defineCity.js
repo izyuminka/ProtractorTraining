@@ -1,13 +1,9 @@
 var getMenuForCity = require("./getMenuForCity.js");
 
 var cityElement = By.xpath('//*[@class[contains(.,"geolink")]]//child::span');
-
 var cityChangeLink = By.css('[data-statlog^="head.region.setup"]');
 var cityInputField = By.id('city__front-input');
-//var citySuggestion = By.xpath("//*[@class='b-autocomplete-item__reg' and text()='" + city + "']");
-//var citySelect = By.xpath("//ul[contains(@class, \"input__popup-items\")]/li[1]/*[@class=\"b-autocomplete-item__reg\" and text()='" + city + "']");
 var citySaveButton = By.css('.button.form__save');
-
 var menuMore = By.xpath('//*[@data-statlog="tabs.more"]');
 
 var EC = protractor.ExpectedConditions;
@@ -19,14 +15,13 @@ module.exports = {
     changeCity: function (city) {
         var citySuggestion = By.xpath("//*[@class='b-autocomplete-item__reg' and text()='" + city + "']");
         var citySelect = By.xpath("//ul[contains(@class, \"input__popup-items\")]/li[1]/*[@class=\"b-autocomplete-item__reg\" and text()='" + city + "']");
-
         browser.element(cityChangeLink).click();
-        //ждать страницу
+        //1. Wait for page load
         browser.manage().timeouts().pageLoadTimeout(5000);
         browser.element(cityInputField).clear().sendKeys(city);
-        //ждать дропдаун
+        //2. Wait for drop-down
         browser.wait(EC.presenceOf(element(citySuggestion)), 5000)
-        //выбираешь елемент
+        //3. Select drop-down value
         .then(function () {
             browser.element(citySelect).click();
         });
@@ -84,9 +79,10 @@ module.exports = {
                 console.log("Arrays are equal.")
             }
             else{
-                console.log("There is a problem with arrays!'"+myArray+"'");
+                console.log("There is a problem with arrays! Test array contains: '"+myArray+"'");
                 console.log(myArray);
             }
+            //below print statements added for test purposes
             console.log(browser.params.City);
             console.log("test array: "+myArray);
             console.log("default city: "+defaultCity);
