@@ -1,8 +1,9 @@
 var defineCity = require("./defineCity.js");
 
+var menuForCity = [],
+    cityMenu = {};
 
-exports.getMenuForCity = function () {
-    var menuForCity = [];
+exports.getMenuForCity = function (city) {
     browser.element(By.xpath('//*[@data-statlog="tabs.more"]')).click();
     browser.wait(element(By.xpath('//div[@class="home-tabs__more"]')).isDisplayed());
     var menuMoreElement =
@@ -14,8 +15,9 @@ exports.getMenuForCity = function () {
                     });
                 });
             }).then(function (value) {
-                //console.log(menuForCity)
-                alert(menuForCity);
+
+            cityMenu[city] = menuForCity;
         });
+    exports.menu = menuForCity;
 };
 

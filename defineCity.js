@@ -4,7 +4,8 @@ var cityElement = By.xpath('//*[@class[contains(.,"geolink")]]//child::span');
 var citySaveButton = By.css('.button.form__save');
 var EC = protractor.ExpectedConditions;
 
-var myArray = [], testCity, cityMenu, menu = [];
+var myArray = [],
+    testCity;
 
 module.exports = {
 
@@ -14,77 +15,86 @@ module.exports = {
         var citySuggestion = By.xpath("//*[@class='b-autocomplete-item__reg' and text()='" + city + "']");
         var citySelect = By.xpath("//li[1]/*[@class=\"b-autocomplete-item__reg\" and text()='" + city + "']");
 
-        browser.element(cityChangeLink).click();
-        //1. Wait for page load
-        browser.manage().timeouts().pageLoadTimeout(5000);
-        browser.element(cityInputField).clear().sendKeys(city);
-        //2. Wait for drop-down
-        browser.wait(EC.presenceOf(element(citySuggestion)), 5000)
-        //3. Select drop-down value
+        browser.element(cityChangeLink).click(); //Click on City name to open page for location changing
+        browser.manage().timeouts().pageLoadTimeout(5000); //Wait for page load
+        browser.element(cityInputField).clear().sendKeys(city); //Enter the name of city under test
+        browser.wait(EC.presenceOf(element(citySuggestion)), 5000) //Wait for drop-down
             .then(function () {
-                browser.element(citySelect).click();
+                browser.element(citySelect).click(); //Click on required drop-down value to select it
             });
-        browser.wait(EC.elementToBeClickable(element(citySaveButton)), 5000);
-        module.exports.saveChangedCity(city);
+        browser.wait(EC.elementToBeClickable(element(citySaveButton)), 5000); //Wait for [Save] button
+        module.exports.saveChangedCity(city); //Call method to save city under test value in the system
     },
 
     saveChangedCity: function (city) {
         var menuMore = By.xpath('//*[@data-statlog="tabs.more"]');
 
-        element(citySaveButton).click();
-        //TODO: get rid of sleep
-        browser.sleep(2000);
-        browser.wait(EC.visibilityOf(element(menuMore)), 5000);
-        //check if city is changed
-        browser.findElement(cityElement).getText().then(function (text) {
+        element(citySaveButton).click(); //Click on [Save] button
+
+        browser.sleep(2000); //TODO: get rid of sleep
+
+        browser.wait(EC.visibilityOf(element(menuMore)), 5000); //Wait for <More> menu item is available
+        browser.findElement(cityElement).getText().then(function (text) { //Check if city has been changed
             if (text === city) {
 
-                cityMenu.set(""+city+"", ""+getMenuForCity.getMenuForCity()+"");
-                //cityMenu[city] = getMenuForCity.getMenuForCity();
+                getMenuForCity.getMenuForCity(city); //Retrieve <More> menu
+//                cityMenu[testCity] = getMenuForCity.getMenuForCity().menu; //Add city:menu pair to cityMenu Map object
 
-                console.log("City has been successfully changed to: '" + city + "'.");
+                //console.log("City has been successfully changed to: '" + city + "'."); //Test if city has been changed
             }
             else {
-                console.log("City hasn't been changed. Edit script!");
+                console.log("City hasn't been changed. Edit script!"); //Print when City is different from the one expected
             }
         });
     },
 
     storeTestArray: function (city) {
-        myArray.push(city);
+        myArray.push(city); //Add City to Array containing already tested cities
     },
 
     isCityTestable: function (array) {
 
-        browser.findElement(cityElement).getText().then(function (city) {
-            for (var i = 0; i < array.length; i++) {
-                if (array[i] === city) {
-                    testCity = browser.params.City[i];
-                    module.exports.storeTestArray(testCity);
+        browser.findElement(cityElement).getText().then(function (city) { //Check what city is set up on accessing the site
+            for (var i = 0; i < array.length; i++) { //Go through all test parameters
+                if (array[i] === city) { //Check if city set up belongs to test parameters
+                    testCity = browser.params.City[i]; //If true, save City to variable
+                    module.exports.storeTestArray(testCity); //Push City to Array as already tested
+                    getMenuForCity.getMenuForCity();
+
                     //cityMenu.set(""+city+"", ""+getMenuForCity.getMenuForCity()+"");
                     //cityMenu.set(keyCity=city,keyMenu=getMenuForCity.getMenuForCity());
-                    //cityMenu[city] = getMenuForCity.getMenuForCity();
+                    //cityMenu[city] = getMenuForCity.menu;
                     //var keyCity = testCity;
-                    var keyMenu = function(){
-                        getMenuForCity.getMenuForCity();
 
-                    };
-                    cityMenu = {testCity:keyMenu};
-                    //menu = Array.from(getMenuForCity.getMenuForCity());
+                    cityMenu[testCity] = getMenuForCity.menu; //Add city:menu pair to cityMenu Map object
+                    module.exports.testArray();
+                    //cityMenu.set(""+city+"", ""+exports.menu+"");
+                    //cityMenu[city] = getMenuForCity.menu;
+                    //cityMenu[testCity] = getMenuForCity.menu;
+                    //cityMenu.set([testCity], getMenuForCity.menu);
 
                 }
                 else {
                     testCity = array[i];
                     module.exports.storeTestArray(testCity);
                     module.exports.changeCity(array[i]);
+
                 }
             }
             module.exports.compareArrays();
+            //module.exports.testArray();
         })
     },
+
+    testArray: function () {
+
+        //cityMenu.values();
+        //testMenu.push(cityMenu["Москва"]);
+        console.log(getMenuForCity.menu);
+        console.log(cityMenu);
+    },
+
     compareArrays: function () {
-        //browser.params.City.sort();
-        //myArray.sort();
 
         if (browser.params.City.sort().join() === myArray.sort().join()) {
             console.log("City arrays are equal.")
@@ -94,48 +104,14 @@ module.exports = {
             console.log(myArray);
         }
         //below print statements added for test purposes
-        console.log(browser.params.City);
-        console.log("test array: " + myArray);
-        console.log("Last selected test city: " + testCity);
+        //console.log(browser.params.City);
+        //console.log("test array: " + myArray);
+        //console.log("Last selected test city: " + testCity);
         //console.log(""+cityMenu.get("Минск") + " this was an attempt to print out map values")
-        var mapIter = cityMenu.keys();
-        console.log(mapIter.next().value);
-
+        //console.log(typeof cityMenu);
+        //var testArr = cityMenu.entries();
+        //console.log(testArr.next().value);
+        //console.log(cityMenu["Москва"].join());
+        console.log(getMenuForCity.menu);
     }
 };
-
-/*exports.defineCity = function (parameters) {
-
-    testCity = parameters;
-
-
-
-    //browser.manage().timeouts().pageLoadTimeout(10000);
-    browser.wait(element(By.xpath('//*[@class[contains(.,"geolink")]]//child::span')).isDisplayed());
-        browser.findElement(cityElement).getText().then(function (text) {
-
-            if (browser.params.City.indexOf(text) > -1) {
-                testCity = text;
-                return testCity;
-            }
-            else {
-                browser.element(By.xpath('//a[@data-statlog="head.region.setup"]')).click();
-                //ждать страницу
-                browser.element(By.id('city__front-input')).clear().sendKeys(testCity);
-                //ждать дропдаун
-                //выбираешь елемент
-                browser.wait(EC.presenceOf(element(By.xpath("//*[@class='b-autocomplete-item__reg' and text()='" + testCity + "']"))), 5000).then(function (value) {
-                    browser.element(By.xpath("//ul[contains(@class, \"input__popup-items\")]/li[1]/*[@class=\"b-autocomplete-item__reg\" and text()='" + testCity + "']")).click();
-                });
-
-                browser.wait(EC.elementToBeClickable(element(By.css('.button.form__save'))), 5000);
-                browser.element(By.css('.button.form__save')).click();
-               browser.sleep(10000)
-                // EC.visibilityOf(element(By.xpath('//*[@data-statlog="tabs.more"]')), 30000)
-            }
-
-            //return testCity;
-
-        });
-
-};*/

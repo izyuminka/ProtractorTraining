@@ -6,6 +6,6 @@ exports.config = {
         browserName: 'chrome'
     },
     params: {
-        City: ['Минск', 'Москва', 'Астана', 'Лондон']
+        City: ['Минск', 'Москва']
     }
 };
