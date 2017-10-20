@@ -14,13 +14,8 @@ exports.getMenuForCity = function (city) {
                         menuForCity.push(text);
                     });
                 });
-                //TODO: push both cities' menu to the map
-                cityMenu[city] = menuForCity;
-            });/*.then(function (value) {
-            cityMenu[city] = menuForCity; //Add city:menu pair to cityMenu Map object
-            //return cityMenu;
-        });*/
-    exports.menu = cityMenu;
-    //console.log(cityMenu);
+            });
+    cityMenu[city] = menuForCity;
 };
 
+exports.menu = cityMenu;

@@ -13,7 +13,7 @@ module.exports = {
         var cityChangeLink = By.css('[data-statlog^="head.region.setup"]');
         var cityInputField = By.id('city__front-input');
         var citySuggestion = By.xpath("//*[@class='b-autocomplete-item__reg' and text()='" + city + "']");
-        var citySelect = By.xpath("//li[1]/*[@class=\"b-autocomplete-item__reg\" and text()='" + city + "']");
+        var citySelect = By.xpath("//li/*[@class=\"b-autocomplete-item__reg\" and text()='" + city + "']");
 
         browser.element(cityChangeLink).click(); //Click on City name to open page for location changing
         browser.manage().timeouts().pageLoadTimeout(5000); //Wait for page load
@@ -36,7 +36,8 @@ module.exports = {
         browser.wait(EC.visibilityOf(element(menuMore)), 5000); //Wait for <More> menu item is available
         browser.findElement(cityElement).getText().then(function (text) { //Check if city has been changed
             if (text === city) {
-                getMenuForCity.getMenuForCity(testCity); //Retrieve <More> menu
+
+                getMenuForCity.getMenuForCity(city); //Retrieve <More> menu
                 console.log(getMenuForCity.menu);
             }
             else {
@@ -55,14 +56,13 @@ module.exports = {
             for (var i = 0; i < array.length; i++) { //Go through all test parameters
                 if (array[i] === city) { //Check if city set up belongs to test parameters
                     testCity = browser.params.City[i]; //If true, save City to variable
+                    getMenuForCity.getMenuForCity(city);
                     module.exports.storeTestArray(testCity); //Push City to Array as already tested
-                    getMenuForCity.getMenuForCity(testCity);
                 }
                 else {
                     testCity = array[i];
                     module.exports.storeTestArray(testCity);
                     module.exports.changeCity(array[i]);
-
                 }
             }
             module.exports.compareArrays();
@@ -78,6 +78,5 @@ module.exports = {
             console.log("There is a problem with arrays! Test array contains: '" + myArray + "'");
             console.log(myArray);
         }
-        //console.log(getMenuForCity.menu);
     }
 };
