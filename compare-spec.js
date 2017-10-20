@@ -13,6 +13,7 @@ describe('compare menu for 2 cities on Yandex page', function () {
         browser.waitForAngularEnabled(false);
         browser.get('http://yandex.ru');
         defineCity.isCityTestable(browser.params.City);
+        //console.log(getMenuForCity.menu);
 
         //defineCity.compareArrays();
         //let a = getMenuForCity.getMenuForCity();

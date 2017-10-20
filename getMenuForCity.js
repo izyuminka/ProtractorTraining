@@ -6,7 +6,7 @@ var menuForCity = [],
 exports.getMenuForCity = function (city) {
     browser.element(By.xpath('//*[@data-statlog="tabs.more"]')).click();
     browser.wait(element(By.xpath('//div[@class="home-tabs__more"]')).isDisplayed());
-    var menuMoreElement =
+    var menuMoreElementGet =
         browser.findElements(By.xpath('//div[@class="home-tabs__more"]/child::div/descendant::*[@class="home-tabs__more-item"]'))
             .then(function (elements) {
                 elements.forEach(function (element) {
@@ -14,10 +14,13 @@ exports.getMenuForCity = function (city) {
                         menuForCity.push(text);
                     });
                 });
-            }).then(function (value) {
-
-            cityMenu[city] = menuForCity;
-        });
-    exports.menu = menuForCity;
+                //TODO: push both cities' menu to the map
+                cityMenu[city] = menuForCity;
+            });/*.then(function (value) {
+            cityMenu[city] = menuForCity; //Add city:menu pair to cityMenu Map object
+            //return cityMenu;
+        });*/
+    exports.menu = cityMenu;
+    //console.log(cityMenu);
 };
 

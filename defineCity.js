@@ -36,11 +36,8 @@ module.exports = {
         browser.wait(EC.visibilityOf(element(menuMore)), 5000); //Wait for <More> menu item is available
         browser.findElement(cityElement).getText().then(function (text) { //Check if city has been changed
             if (text === city) {
-
-                getMenuForCity.getMenuForCity(city); //Retrieve <More> menu
-//                cityMenu[testCity] = getMenuForCity.getMenuForCity().menu; //Add city:menu pair to cityMenu Map object
-
-                //console.log("City has been successfully changed to: '" + city + "'."); //Test if city has been changed
+                getMenuForCity.getMenuForCity(testCity); //Retrieve <More> menu
+                console.log(getMenuForCity.menu);
             }
             else {
                 console.log("City hasn't been changed. Edit script!"); //Print when City is different from the one expected
@@ -59,20 +56,7 @@ module.exports = {
                 if (array[i] === city) { //Check if city set up belongs to test parameters
                     testCity = browser.params.City[i]; //If true, save City to variable
                     module.exports.storeTestArray(testCity); //Push City to Array as already tested
-                    getMenuForCity.getMenuForCity();
-
-                    //cityMenu.set(""+city+"", ""+getMenuForCity.getMenuForCity()+"");
-                    //cityMenu.set(keyCity=city,keyMenu=getMenuForCity.getMenuForCity());
-                    //cityMenu[city] = getMenuForCity.menu;
-                    //var keyCity = testCity;
-
-                    cityMenu[testCity] = getMenuForCity.menu; //Add city:menu pair to cityMenu Map object
-                    module.exports.testArray();
-                    //cityMenu.set(""+city+"", ""+exports.menu+"");
-                    //cityMenu[city] = getMenuForCity.menu;
-                    //cityMenu[testCity] = getMenuForCity.menu;
-                    //cityMenu.set([testCity], getMenuForCity.menu);
-
+                    getMenuForCity.getMenuForCity(testCity);
                 }
                 else {
                     testCity = array[i];
@@ -82,16 +66,7 @@ module.exports = {
                 }
             }
             module.exports.compareArrays();
-            //module.exports.testArray();
         })
-    },
-
-    testArray: function () {
-
-        //cityMenu.values();
-        //testMenu.push(cityMenu["Москва"]);
-        console.log(getMenuForCity.menu);
-        console.log(cityMenu);
     },
 
     compareArrays: function () {
@@ -103,15 +78,6 @@ module.exports = {
             console.log("There is a problem with arrays! Test array contains: '" + myArray + "'");
             console.log(myArray);
         }
-        //below print statements added for test purposes
-        //console.log(browser.params.City);
-        //console.log("test array: " + myArray);
-        //console.log("Last selected test city: " + testCity);
-        //console.log(""+cityMenu.get("Минск") + " this was an attempt to print out map values")
-        //console.log(typeof cityMenu);
-        //var testArr = cityMenu.entries();
-        //console.log(testArr.next().value);
-        //console.log(cityMenu["Москва"].join());
-        console.log(getMenuForCity.menu);
+        //console.log(getMenuForCity.menu);
     }
 };
